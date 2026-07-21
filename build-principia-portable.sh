@@ -9,6 +9,7 @@ cd build_principia
 rm -rf principia
 mkdir -p principia
 cp principia.exe principia/
+cp register-protocol-handler.exe principia/
 cp -r ../principia/data principia/
 cp ../curl-ca-bundle.crt principia/data
 touch principia/portable.txt

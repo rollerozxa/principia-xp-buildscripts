@@ -6,6 +6,13 @@ TOPDIR="$PWD"
 
 export PATH="$PWD/mingw/bin:$PATH"
 
+# if principia is not cloned, clone it
+if [ ! -d principia ]; then
+	git clone --depth 1 https://github.com/Bithack/principia
+fi
+
+cp version_info.hh principia/src/
+
 mkdir -p build_principia
 cd build_principia
 
@@ -31,7 +38,6 @@ cmake ../principia/ \
 	-DCMAKE_C_FLAGS="-ffunction-sections -fdata-sections" \
 	-DCMAKE_CXX_FLAGS="-ffunction-sections -fdata-sections -DCURL_STATICLIB" \
 	-DCMAKE_EXE_LINKER_FLAGS="-Wl,--gc-sections -static" \
-	-DBACKEND_IMGUI=ON \
 	-G Ninja
 
 ninja
